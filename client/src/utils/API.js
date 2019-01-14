@@ -1,9 +1,10 @@
 import axios from "axios";
+require('dotenv').config();
 
-export default {
+export default {  
 
   apiArticles: function(bookTitle) {
-    let apikey = `AIzaSyBXdINHCq8KsquH6NgYj51iaqIKTTftRQI`;
+    let apikey = process.env.GOOGLE_ID;
     let url = `https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&key=${apikey}`;
     return axios.get(url)
       .then(res => {
