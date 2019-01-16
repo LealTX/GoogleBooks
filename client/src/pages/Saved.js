@@ -14,6 +14,16 @@ class Saved extends Component {
             .then(res => this.setState({ book: res.data }))
             .catch(err => console.log(err));
     }
+
+    render() {
+        return (
+            <Container fluid>
+                <Row>
+                    <h1>Saved Books</h1>
+                </Row>
+            </Container>
+        )
+    }
 }
 
 export default Saved;

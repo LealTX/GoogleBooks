@@ -16,7 +16,8 @@ app.use(routes);
 
 // Send every other request to the React app
 // Define any API routes before this runs
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebookslist");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebookslist", { useNewUrlParser: true
+});
 
 
 app.listen(PORT, () => {

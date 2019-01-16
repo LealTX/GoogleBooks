@@ -12,22 +12,10 @@ class BookSearch extends Component {
     details = event => {
         event.preventDefault();
         window.open(this.props.link);
-    }
-    save = event => {
-        event.preventDefault();
-        axios.post("/api/books", {
-            title: this.state.book.title,
-            authors: this.state.book.authors,
-            thumbnail: this.state.book.thumbnail,
-            synopsis: this.state.book.synopsis
-        }).then(response => {
-            this.props.saveRemove(this.state.book.id);
-            console.log(response);
-        }).catch(err => console.log(err))
-
-    }
+        }
 
     handleBookSave = index => {
+        index.preventDefault();
         const newBook = {
             title: this.state.book.title,
             authors: this.state.book.authors,

@@ -8,12 +8,12 @@ export default {
     return axios.get(url + query );
   },
   getSaved: function() {
-    return axios.get("/api/book");
+    return axios.get("/api/books");
   },
   saveBook: function(newBook) {
-    return axios.post("/api/book", newBook);
+    return axios.post("/api/books", newBook);
   },
   deleteBook: function(id) {
-    return axios.delete("/api/book/" + id);
+    return axios.delete("/api/books/" + id);
   }
 };
