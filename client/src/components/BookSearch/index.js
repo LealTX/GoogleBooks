@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import API from "../../utils/API";
 
 class BookSearch extends Component {
     constructor(props) {
@@ -26,6 +27,17 @@ class BookSearch extends Component {
 
     }
 
+    handleBookSave = index => {
+        const newBook = {
+            title: this.state.book.title,
+            authors: this.state.book.authors,
+            thumbnail: this.state.book.thumbnail,
+            synopsis: this.state.book.synopsis
+        }
+        API.saveBook(newBook)
+            .catch(err => console.log(err));
+    };
+
     onComponentMounted() {
         const bookInfo = {id: this.props.id, title: this.props.title, authors: this.props.authors, thumbnail: this.props.thumbnail, synopsis: this.props.synopsis};
         this.setState({book: bookInfo});
@@ -38,7 +50,7 @@ class BookSearch extends Component {
             <img className="img-fluid" src={this.props.thumbnail} alt="Book Jacket" />
             <br/>
             <button type="button" className="btn btn-success mb-2 mt-2" onClick={this.details}>Details</button>
-            <button type="button" className="btn btn-success mb-2 mt-2 ml-2" onClick={this.save}>Save</button>
+            <button type="button" className="btn btn-success mb-2 mt-2 ml-2" onClick={this.handleBookSave}>Save</button>
             <p>{this.props.synopsis}</p>
         </div>
     )
