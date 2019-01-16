@@ -1,13 +1,20 @@
 import React from "react";
 import Nav from "./components/Nav";
-import Header from "./components/Header";
+import Jumbotron from "./components/Jumbotron";
+import Search from "./pages/Search";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
     return (
-        <div>
-            <Nav />
-            <Header />
-        </div>
+        <Router>
+            <div>
+                <Nav />
+                <Jumbotron />
+                <Switch>
+                    <Route exact path="/" component={Search} />
+                </Switch>
+            </div>
+        </Router>
     );
 }
 

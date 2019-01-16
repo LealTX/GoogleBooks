@@ -1,26 +1,16 @@
 import axios from "axios";
-require('dotenv').config();
+
+const url = `https://www.googleapis.com/books/v1/volumes?q=`;
 
 export default {  
 
-  apiArticles: function(bookTitle) {
-    let apikey = process.env.GOOGLE_ID;
-    let url = `https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&key=${apikey}`;
-    return axios.get(url)
-      .then(res => {
-        return res.data.response;
-      });
+  getBooks: function(query) {
+    return axios.get(url + query );
   },
-  // Get all books
-  getArticles: function() {
-    return axios.get("/api/book");
+  saveBook: function(newBook) {
+    return axios.post("/api/book", newBook);
   },
-  // Save an book to the database
-  saveArticle: function(saveBook) {
-    return axios.post("/api/book", saveBook);
-  },
-  // Delete an book with the given id
-  deleteArticle: function(id) {
+  deleteBook: function(id) {
     return axios.delete("/api/book/" + id);
   }
 };
